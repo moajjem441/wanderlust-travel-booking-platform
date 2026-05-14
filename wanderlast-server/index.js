@@ -51,6 +51,9 @@ async function run() {
 
 
 
+
+
+
    //get api call for collecting destination details data
    app.get('/destination/:id',async(req,res)=>{
     const {id}=req.params;
