@@ -7,6 +7,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { authClient } from "@/lib/auth-client"; //import the auth client
 import { createAuthClient } from "better-auth/client";
 import { redirect } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SignUpPage = () => {
@@ -105,7 +106,7 @@ const SignUpPage = () => {
                         </Button>
                         <p>Or sign up with</p>
                         <div className=" w-full p-2 flex justify-center items-center gap-2 border-2 border-gray-100">
-                            <FaGoogle style={{ color: "rgb(66, 133, 244)" }}/> <p>Sign Up with Google</p>
+                            <FcGoogle /> <p>Sign Up with Google</p>
                         </div>
 
                         <div className="flex gap-2">
