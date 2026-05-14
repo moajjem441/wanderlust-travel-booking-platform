@@ -1,12 +1,11 @@
 
+import BookingCard from "@/components/BookingCard";
 import DeleteAlert from "@/components/DeleteAlert";
 import EditDestinationCard from "@/components/EditDestinaitonCard";
 import { Avatar, Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { FaArrowRight } from "react-icons/fa";
-import { TiTick } from "react-icons/ti";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -14,9 +13,11 @@ const DestinationDetailsPage = async ({ params }) => {
 
   const res = await fetch(`http://localhost:5000/destination/${id}`);
   const destinationDetails = await res.json()
+  
 
-  const { destinationName, country, category, price, duration, departureDate, imageUrl, description } = destinationDetails;
+  const { category, imageUrl, description } = destinationDetails;
   console.log(destinationDetails)
+
   return (
     <div>
       <div className="max-w-2/3 mx-auto">
@@ -54,41 +55,7 @@ const DestinationDetailsPage = async ({ params }) => {
 
 
 
-          <Card className="gap-2 max-w-3xl p-4">
-            <h2>Starting from</h2>
-            <h1 className="text-cyan-500">${price} per person</h1>
-
-            <div className="my-3 bg-gray-300 p-2 rounded-3xl">
-              <h2>{departureDate}</h2>
-            </div>
-
-            <Button className="w-full">Book Now <FaArrowRight /> </Button>
-
-
-
-            <ul className="space-y-2">
-              <li>
-                <div className="flex items-center">
-                  <span><TiTick style={{ color: "green" }} /></span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptatum.
-                </div>
-              </li>
-
-              <li>
-                <div className="flex items-center">
-                  <span><TiTick style={{ color: "green" }} /></span> Lorem ipsum dolor sit amet.
-                </div>
-              </li>
-              <li >
-                <div className="flex items-center">
-                  <span><TiTick style={{ color: "green" }} /></span> Lorem ipsum dolor sit amet.
-                </div>
-              </li>
-            </ul>
-
-
-
-
-          </Card>
+          <BookingCard destinationDetails={destinationDetails}></BookingCard>
         </div>
       </div>
     </div>

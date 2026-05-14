@@ -4,12 +4,15 @@ import {AlertDialog, Button} from "@heroui/react";
 const DeleteAlert = async ({destinationDetails}) => {
       const { _id,destinationName, country, category, price, duration, departureDate, imageUrl, description } = destinationDetails;
 
-      const res = await fetch(`http://localhost:5000/destination/${_id}`,{
+      const handleDelete = async()=>{
+         const res = await fetch(`http://localhost:5000/destination/${_id}`,{
         method:"DELETE",
         headers:{
             'content-type':'application/json'
         }
       })
+      }
+     
     return (
         <div>
             <AlertDialog>
@@ -32,7 +35,7 @@ const DeleteAlert = async ({destinationDetails}) => {
               <Button slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger">
+              <Button onClick={handleDelete} slot="close" variant="danger">
                 Delete {destinationName}
               </Button>
             </AlertDialog.Footer>
