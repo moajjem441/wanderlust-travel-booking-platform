@@ -30,6 +30,7 @@ async function run() {
     //database and collection create
     const db=client.db("wanderlust")
     const destinationCollection = db.collection("destination")
+    const bookingCollection =db.collection("bookings")
 
 
     //get api for collecting data from database
@@ -80,7 +81,15 @@ async function run() {
    })
 
 
-   //post for send mail and passs
+
+
+  //  --------------<Bookings>---------------
+  app.post('/bookings',async(req,res)=>{
+    const bookingData = req.body
+
+    const result= await bookingCollection.insertOne(bookingData)
+    res.json(result)
+  })
    
 
     
