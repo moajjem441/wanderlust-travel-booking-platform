@@ -16,6 +16,10 @@ const Navbar = () => {
     console.log(session)
     const user = session?.user
 
+    const handleSignOut = async()=>{
+        await authClient.signOut();
+    }
+
     return (
         <div>
             <nav className='flex justify-between p-4'>
@@ -32,7 +36,7 @@ const Navbar = () => {
                 </div>
 
                 <ul className='flex justify-center gap-3'>
-                    <li><Link href={'/profile'}>Profile</Link></li>
+                    <li><Link href={'/profile'}></Link></li>
 
 
                     {user ?
@@ -43,7 +47,7 @@ const Navbar = () => {
                                 <Avatar.Fallback>{user.name}</Avatar.Fallback>
                             </Avatar></li>
 
-                            <li>  <Link href="/signup"><Button variant="danger">Log out</Button></Link>
+                            <li>  <Link href="/login"><Button onClick={handleSignOut} variant="danger">Log out</Button></Link>
                             </li>
 
                         </> :
