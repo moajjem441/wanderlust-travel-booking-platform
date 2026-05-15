@@ -1,3 +1,4 @@
+import BookingCancel from "@/components/BookingCancel";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
@@ -51,7 +52,7 @@ if(!user){
                         </p>
                         <p>Booking_id:{booking._id}</p>
                     <h1 className="text-cyan-500 text-3xl font-bold">${booking.price}</h1>
-                     <Button variant="danger" ><BiTrash/>Delete</Button>
+                    <BookingCancel></BookingCancel>
                     </div>
                    
 
