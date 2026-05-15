@@ -13,8 +13,14 @@ const BookingCancel = ({bookingId}) => {
                 'content-type':"application/json"
             }
         })
+        if(!res.ok){
+         return "res not get"
+        }
         const data = res.json();
-        console.log("Data",data)
+        if(!data){
+            return "No Data"
+        }
+        // console.log("Data",data)
     }
 
     return (
