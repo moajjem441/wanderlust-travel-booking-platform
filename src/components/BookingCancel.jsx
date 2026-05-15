@@ -21,7 +21,7 @@ const BookingCancel = () => {
                 Cancel
               </Button>
               <Button slot="close" variant="danger">
-                Delete Project
+                Cancel Booking
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>
