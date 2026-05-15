@@ -51,7 +51,7 @@ if(!user){
                         </p>
                         <p>Booking_id:{booking._id}</p>
                     <h1 className="text-cyan-500 text-3xl font-bold">${booking.price}</h1>
-                    <BookingCancel bookingId={booking._id}></BookingCancel>
+                    <BookingCancel booking={booking._id}></BookingCancel>
                     </div>
                    
 
