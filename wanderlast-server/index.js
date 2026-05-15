@@ -90,6 +90,13 @@ async function run() {
     const result= await bookingCollection.insertOne(bookingData)
     res.json(result)
   })
+
+
+  app.get("/bookings/:userId",async(req,res)=>{
+    const {userId}=req.params;
+    const result = await bookingCollection.find({userId:userId}).toArray();
+    res.json(result)
+  })
    
 
     
