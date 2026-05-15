@@ -1,7 +1,7 @@
 "use client";
 import {AlertDialog, Button} from "@heroui/react";
 
-const BookingCancel = () => {
+const BookingCancel = ({bookingId}) => {
     return (
         <div>
             <AlertDialog>
