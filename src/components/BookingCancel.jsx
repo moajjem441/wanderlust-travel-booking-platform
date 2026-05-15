@@ -12,7 +12,7 @@ const BookingCancel = () => {
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
-              <AlertDialog.Heading>Delete project permanently?</AlertDialog.Heading>
+              <AlertDialog.Heading>Cancel Booking permanently?</AlertDialog.Heading>
             </AlertDialog.Header>
             <AlertDialog.Body>
             </AlertDialog.Body>
