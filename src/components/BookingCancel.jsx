@@ -2,6 +2,12 @@
 import {AlertDialog, Button} from "@heroui/react";
 
 const BookingCancel = ({bookingId}) => {
+
+    const handleBookingCancel=async()=>{
+
+        const res = await fetch(`http://localhost:5000/bookings/:book`)
+    }
+
     return (
         <div>
             <AlertDialog>
