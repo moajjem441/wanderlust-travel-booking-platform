@@ -5,7 +5,7 @@ const BookingCancel = () => {
     return (
         <div>
             <AlertDialog>
-      <Button variant="danger">Delete Project</Button>
+      <Button variant="danger">Cancel Booking</Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">
