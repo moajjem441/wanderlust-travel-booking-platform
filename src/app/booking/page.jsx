@@ -1,3 +1,4 @@
+import BookingCancel from "@/components/BookingCancel";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
@@ -14,7 +15,7 @@ const BookingPage = async () => {
 
 const user = session?.user
 
-console.log("user",user)
+// console.log("user",user)
 
 if(!user){
     return "User Null"
@@ -26,7 +27,7 @@ if(!user){
     }
     
     const bookingData = await res.json();
-    console.log("bookingData",bookingData)
+    // console.log("bookingData",bookingData)
     if(!bookingData){
         return "No Data"
     }
@@ -35,7 +36,7 @@ if(!user){
             <h1>Booking Page</h1>
 
             {
-                bookingData.map(booking =><div className="flex gap-3 border border-2 p-2 min-w-2xl my-2">
+                bookingData.map(booking =><div key={booking._id} className="flex gap-3 border border-2 p-2 min-w-2xl my-2">
                     <Image src={booking.imageUrl} alt={booking.userName} width={200} height={200}></Image>
                     
                     <div>
@@ -51,7 +52,7 @@ if(!user){
                         </p>
                         <p>Booking_id:{booking._id}</p>
                     <h1 className="text-cyan-500 text-3xl font-bold">${booking.price}</h1>
-                    <BookingCancel booking={booking._id}></BookingCancel>
+                    <BookingCancel bookingId={booking._id}></BookingCancel>
                     </div>
                    
 
