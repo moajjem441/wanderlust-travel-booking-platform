@@ -22,6 +22,14 @@ const client = new MongoClient(uri, {
   }
 });
 
+
+//for token
+const verification = (req,res,next)=>{
+  const header = req.headers.authorization
+  console.log(header)
+  next()
+}
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -56,7 +64,7 @@ async function run() {
 
 
    //get api call for collecting destination details data
-   app.get('/destination/:id',async(req,res)=>{
+   app.get('/destination/:id',verification,async(req,res)=>{
     const {id}=req.params;
     const result =await destinationCollection.findOne({_id: new ObjectId(id)});
     res.json(result);
