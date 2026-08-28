@@ -5,7 +5,7 @@ const DeleteAlert = async ({destinationDetails}) => {
       const { _id,destinationName, country, category, price, duration, departureDate, imageUrl, description } = destinationDetails;
 
       const handleDelete = async()=>{
-         const res = await fetch(`http://localhost:5000/destination/${_id}`,{
+         const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/destination/${_id}`,{
         method:"DELETE",
         headers:{
             'content-type':'application/json'

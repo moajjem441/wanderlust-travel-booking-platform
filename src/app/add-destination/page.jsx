@@ -11,7 +11,7 @@ const AddDestinaitonPage = () => {
         const destinationData= Object.fromEntries(formData.entries());
         console.log(destinationData)
 
-        const req=await fetch('http://localhost:5000/destination',{
+        const req=await fetch(`${process.env.NEXT_PUBLIC_URL}/destination`,{
            
             method:"POST",
             headers:{

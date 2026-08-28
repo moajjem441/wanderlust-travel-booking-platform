@@ -1,20 +1,29 @@
 import BookingCard from "@/components/BookingCard";
 import DeleteAlert from "@/components/DeleteAlert";
 import EditDestinationCard from "@/components/EditDestinaitonCard";
+import { auth } from "@/lib/auth";
 import { Avatar, Button, Card } from "@heroui/react";
+
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
 
+ const {token} = await auth.api.getToken({
+  headers: await headers()
+ })
 
-
+ console.log(token)
 
 
   // ১. ডাটা ফেচ করা
-  const res = await fetch(`http://localhost:5000/destination/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/destination/${id}`, {
     cache: "no-store", // ডাটাবেসের লেটেস্ট আপডেট পাওয়ার জন্য
+    headers :{
+      authorization: `Bearer ${token}`
+    }
   });
 
 

@@ -6,13 +6,16 @@ import { IoEnterOutline } from 'react-icons/io5';
 import { SlCalender } from 'react-icons/sl';
 
 const DestinationCard = ({ destination }) => {
+    if(!destination){
+        return "No data"
+    }
     const { _id,destinationName, country, price, duration, imageUrl } = destination
     return (
         <div >
             <div >
 
                 <div >
-                    <Image src={imageUrl} alt='destinationName' width={600} height={500} ></Image>
+                    <Image src={imageUrl} alt='destinationName' width={600} height={500} className='w-auto h-auto' ></Image>
                 </div>
 
                 <div>

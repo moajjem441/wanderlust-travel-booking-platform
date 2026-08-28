@@ -21,7 +21,7 @@ const BookingPage = async () => {
         return "User Null"
     }
 
-    const res = await fetch(`http://localhost:5000/bookings/${user?.id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/bookings/${user?.id}`)
     if (!res.ok) {
         return "Error"
     }

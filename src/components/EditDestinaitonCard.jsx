@@ -13,7 +13,7 @@ const EditDestinationCard = ({ destinationDetails }) => {
 
     console.log(editDestiantion)
 
-    const req = await fetch(`http://localhost:5000/destination/${_id}`,{
+    const req = await fetch(`${process.env.NEXT_PUBLIC_URL}/destination/${_id}`,{
       method:"PATCH",
       headers:{
         'content-type':'application/json'
