@@ -6,6 +6,7 @@ const dotenv=require("dotenv");
 dotenv.config();
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { createRemoteJWKSet, jwtVerify } = require("jose-cjs");
 const uri =process.env.MONG_AUTH;
 const port =process.env.PORT 
 
@@ -22,18 +23,42 @@ const client = new MongoClient(uri, {
   }
 });
 
+const JWKS=createRemoteJWKSet(
+  new URL(`${process.env.CLIENT_AUTH}/api/auth/jwks`)
+)
+
 
 //for token
-const verification = (req,res,next)=>{
+const verification = async (req,res,next)=>{
   const header = req.headers.authorization
-  console.log(header)
-  next()
-}
+  if(!header){
+    return res.status(401).json({message:"Unauthorized"})
+  }
+  const token = header.split(" ")[1]
+  // console.log(header)
+  if(!token){
+    return res.status(401).json({message:"Unauthorized"})
+  }
+
+  try{
+    const {payload}= await jwtVerify(token,JWKS)
+    console.log(payload)
+     next()
+  }
+  catch(error){
+    return res.status(403).json({message:"Forbidden"});
+  }
+
+ 
+};
+
+
+
 
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    // await client.connect();
 
     //database and collection create
     const db=client.db("wanderlust")
@@ -92,7 +117,7 @@ async function run() {
 
 
   //  --------------<Bookings>---------------
-  app.post('/bookings',async(req,res)=>{
+  app.post('/bookings',verification,async(req,res)=>{
     const bookingData = req.body
 
     const result= await bookingCollection.insertOne(bookingData)
@@ -118,7 +143,7 @@ async function run() {
 
 
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    // await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
