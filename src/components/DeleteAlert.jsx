@@ -1,7 +1,8 @@
 'use client'
+
 import {AlertDialog, Button} from "@heroui/react";
 
-const DeleteAlert = async ({destinationDetails}) => {
+const DeleteAlert = ({destinationDetails}) => {
       const { _id,destinationName, country, category, price, duration, departureDate, imageUrl, description } = destinationDetails;
 
       const handleDelete = async()=>{
