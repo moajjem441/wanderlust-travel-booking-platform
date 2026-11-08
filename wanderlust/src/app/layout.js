@@ -21,7 +21,7 @@ const josefin=Josefin_Sans({
 })
 
 export const metadata = {
-  title: "Wanderlust-travel booking platform",
+  title: "Wanderlust-Travel booking platform",
   description: "Travel booking platform",
 };
 
